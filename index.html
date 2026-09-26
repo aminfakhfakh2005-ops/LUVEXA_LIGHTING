@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUXORA — éclairage LED, RGB et décoration lumineuse en Tunisie.">
+  <title>LUXORA — Éclairez votre style</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="#accueil">LUX<span>O</span>RA</a>
+  <nav>
+    <a href="#accueil" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
+    <a href="#produits" data-fr="Produits" data-ar="المنتجات">Produits</a>
+    <a href="#livraison" data-fr="Livraison" data-ar="التوصيل">Livraison</a>
+    <a href="#faq" data-fr="FAQ" data-ar="الأسئلة">FAQ</a>
+    <a href="#contact" data-fr="Contact" data-ar="اتصل بنا">Contact</a>
+  </nav>
+  <div class="head-actions">
+    <button class="lang" id="langBtn">AR</button>
+    <button class="cart-btn" id="cartBtn">🛒 <span data-fr="Panier" data-ar="السلة">Panier</span> <b id="cartCount">0</b></button>
+    <a class="wa small" href="https://wa.me/21644379166" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<section id="accueil" class="hero">
+  <div class="hero-text">
+    <p class="eyebrow" data-fr="ÉCLAIRAGE • DÉCORATION • RGB" data-ar="إضاءة • ديكور • RGB">ÉCLAIRAGE • DÉCORATION • RGB</p>
+    <h1 data-fr="Donnez vie à vos idées lumineuses." data-ar="أضف الحياة إلى أفكارك المضيئة.">Donnez vie à vos idées <span>lumineuses.</span></h1>
+    <p data-fr="Spots LED, rubans RGB, éclairage décoratif et solutions lumineuses pour votre intérieur." data-ar="Spots LED وشرائط RGB وإضاءة ديكورية وحلول مضيئة لمنزلك.">Spots LED, rubans RGB, éclairage décoratif et solutions lumineuses pour votre intérieur.</p>
+    <div class="actions">
+      <a class="btn gold" href="#produits" data-fr="Découvrir les produits" data-ar="اكتشف المنتجات">Découvrir les produits</a>
+      <a class="btn outline" href="https://wa.me/21644379166?text=Bonjour%20LUXORA%2C%20je%20souhaite%20avoir%20plus%20d'informations." target="_blank" rel="noopener" data-fr="Nous contacter" data-ar="تواصل معنا">Nous contacter</a>
+    </div>
+  </div>
+  <div class="orb"><div class="orb-ring"></div><div class="orb-core">LUXORA</div></div>
+</section>
+
+<section class="features">
+  <div><b>⚡ <span data-fr="Qualité" data-ar="جودة">Qualité</span></b><span data-fr="Produits sélectionnés" data-ar="منتجات مختارة">Produits sélectionnés</span></div>
+  <div><b>🚚 <span data-fr="Livraison" data-ar="توصيل">Livraison</span></b><span data-fr="Partout en Tunisie" data-ar="في كامل تونس">Partout en Tunisie</span></div>
+  <div><b>💬 <span data-fr="Commande" data-ar="طلب">Commande</span></b><span data-fr="Simple par WhatsApp" data-ar="بكل سهولة عبر WhatsApp">Simple par WhatsApp</span></div>
+</section>
+
+<section id="produits" class="section products-section">
+  <div class="section-title">
+    <p class="eyebrow" data-fr="NOTRE COLLECTION" data-ar="مجموعتنا">NOTRE COLLECTION</p>
+    <h2 data-fr="Éclairage qui fait la différence" data-ar="إضاءة تصنع الفرق">Éclairage qui fait la différence</h2>
+    <p class="muted" data-fr="Choisissez un produit, ajoutez-le au panier et envoyez votre commande sur WhatsApp." data-ar="اختر المنتج، أضفه إلى السلة وأرسل طلبك عبر WhatsApp.">Choisissez un produit, ajoutez-le au panier et envoyez votre commande sur WhatsApp.</p>
+  </div>
+  <div class="shop-tools">
+    <input id="search" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher">
+    <div class="categories">
+      <button class="filter active" data-cat="all">Tous</button>
+      <button class="filter" data-cat="rgb">RGB</button>
+      <button class="filter" data-cat="decor">Décoration</button>
+      <button class="filter" data-cat="spot">Spots LED</button>
+    </div>
+  </div>
+  <div class="products" id="productGrid"></div>
+  <p class="empty" id="empty">Aucun produit trouvé.</p>
+</section>
+
+<section class="promo">
+  <div><span class="eyebrow">LUXORA</span><h2>Votre espace mérite sa propre lumière.</h2></div>
+  <a class="btn gold" href="#produits">Voir la collection</a>
+</section>
+
+<section id="livraison" class="info-section">
+  <div class="section-title"><p class="eyebrow" data-fr="SERVICE" data-ar="الخدمة">SERVICE</p><h2 data-fr="Commande & livraison" data-ar="الطلب والتوصيل">Commande & livraison</h2></div>
+  <div class="info-grid">
+    <article><span>01</span><h3 data-fr="Choisissez" data-ar="اختر">Choisissez</h3><p data-fr="Sélectionnez vos produits et les quantités souhaitées." data-ar="اختر المنتجات والكميات التي تريدها.">Sélectionnez vos produits et les quantités souhaitées.</p></article>
+    <article><span>02</span><h3 data-fr="Confirmez" data-ar="أكد">Confirmez</h3><p data-fr="Votre panier prépare automatiquement le message WhatsApp." data-ar="السلة تجهز تلقائياً رسالة WhatsApp الخاصة بطلبك.">Votre panier prépare automatiquement le message WhatsApp.</p></article>
+    <article><span>03</span><h3 data-fr="Recevez" data-ar="استلم">Recevez</h3><p data-fr="Livraison disponible partout en Tunisie. Les détails sont confirmés sur WhatsApp." data-ar="التوصيل متوفر في كامل تونس. التفاصيل يتم تأكيدها عبر WhatsApp.">Livraison disponible partout en Tunisie. Les détails sont confirmés sur WhatsApp.</p></article>
+  </div>
+</section>
+
+<section id="faq" class="section faq-section">
+  <div class="section-title"><p class="eyebrow">FAQ</p><h2 data-fr="Questions fréquentes" data-ar="الأسئلة الشائعة">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <details><summary data-fr="Comment commander ?" data-ar="كيفاش نطلب؟">Comment commander ?</summary><p data-fr="Ajoutez les produits au panier puis cliquez sur Commander via WhatsApp." data-ar="أضف المنتجات إلى السلة ثم اضغط على الطلب عبر WhatsApp.">Ajoutez les produits au panier puis cliquez sur Commander via WhatsApp.</p></details>
+    <details><summary data-fr="La livraison est-elle disponible en Tunisie ?" data-ar="هل التوصيل متوفر في تونس؟">La livraison est-elle disponible en Tunisie ?</summary><p data-fr="Oui, les modalités et le prix de livraison sont confirmés avec vous sur WhatsApp." data-ar="نعم، تفاصيل وسعر التوصيل يتم تأكيدها معك عبر WhatsApp.">Oui, les modalités et le prix de livraison sont confirmés avec vous sur WhatsApp.</p></details>
+    <details><summary data-fr="Puis-je demander des informations avant de commander ?" data-ar="هل يمكنني الاستفسار قبل الطلب؟">Puis-je demander des informations avant de commander ?</summary><p data-fr="Bien sûr. Utilisez le bouton WhatsApp pour nous envoyer votre question." data-ar="أكيد. استعمل زر WhatsApp لإرسال سؤالك.">Bien sûr. Utilisez le bouton WhatsApp pour nous envoyer votre question.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <p class="eyebrow" data-fr="BESOIN D'INFORMATIONS ?" data-ar="تحتاج معلومات؟">BESOIN D'INFORMATIONS ?</p>
+  <h2 data-fr="Parlons de votre projet." data-ar="خلينا نحكيو على مشروعك.">Parlons de votre projet.</h2>
+  <p class="muted" data-fr="WhatsApp : +216 44 379 166" data-ar="WhatsApp : +216 44 379 166">WhatsApp : +216 44 379 166</p>
+  <a class="btn gold" href="https://wa.me/21644379166" target="_blank" rel="noopener">WhatsApp</a>
+</section>
+</main>
+
+<a class="floating-wa" href="https://wa.me/21644379166" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart" id="cartPanel" aria-label="Panier">
+  <div class="cart-head"><h2 data-fr="Votre panier" data-ar="سلة المشتريات">Votre panier</h2><button id="closeCart">×</button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-bottom"><div><span data-fr="Total" data-ar="المجموع">Total</span><strong id="cartTotal">0 TND</strong></div><button class="btn gold full" id="orderBtn" data-fr="Commander via WhatsApp" data-ar="اطلب عبر WhatsApp">Commander via WhatsApp</button></div>
+</aside>
+
+<div class="modal" id="productModal">
+  <button class="modal-close" id="closeModal">×</button>
+  <div id="modalContent"></div>
+</div>
+
+<footer><strong>LUXORA</strong><span>© 2026 — Éclairez votre style</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
