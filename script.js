@@ -1,3 +1,5 @@
+const SUPABASE_URL = "https://bimttawmzuzlbzgpbqo.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_TTQQPHcHGI_a_47m3k_ujg_AN0MpqDA";
 const WA='21644379166';
 const products=[
 {id:1,name:'Ruban LED RGB 5050',price:25,cat:'Rubans LED',img:'images/ruban-rgb-5050.jpg',badge:'Best Seller',desc:'Ruban RGB 5050 avec télécommande pour créer une ambiance colorée.'},
