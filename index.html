@@ -1,58 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXORA — Éclairez votre style</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>LUXORA — Éclairez votre style</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<header class="header">
-<a class="logo" href="#">LUX<span>O</span>RA</a>
-<nav><a href="#accueil">Accueil</a><a href="#produits">Produits</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></nav>
-<a class="wa small" href="https://wa.me/21644379166" target="_blank">WhatsApp</a>
-</header>
+<header class="header"><a class="logo" href="#">LUX<span>O</span>RA</a><nav><a href="#accueil">Accueil</a><a href="#produits">Produits</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav><a class="wa small" href="#panier" id="cartLink">Panier (<span id="cartCount">0</span>)</a></header>
 <main>
-<section id="accueil" class="hero"><div class="hero-text">
-<p class="eyebrow">ÉCLAIRAGE • DÉCORATION • RGB</p>
-<h1>Donnez vie à vos idées <span>lumineuses.</span></h1>
-<p>Spots LED, rubans RGB, éclairage décoratif et solutions lumineuses pour votre intérieur.</p>
-<div class="actions"><a class="btn gold" href="#produits">Voir les produits</a><a class="btn outline" href="https://wa.me/21644379166" target="_blank">Commander sur WhatsApp</a></div>
-</div><div class="orb"><div class="orb-ring"></div><div class="orb-core">LUXORA</div></div></section>
+<section id="accueil" class="hero"><div class="hero-text"><p class="eyebrow">ÉCLAIRAGE • DÉCORATION • RGB</p><h1>Donnez vie à vos idées <span>lumineuses.</span></h1><p>Spots LED, rubans RGB, éclairage décoratif et solutions lumineuses pour votre intérieur.</p><div class="actions"><a class="btn gold" href="#produits">Voir les produits</a><a class="btn outline" href="https://wa.me/21644379166" target="_blank">Commander sur WhatsApp</a></div></div><div class="orb"><div class="orb-ring"></div><div class="orb-core">LUXORA</div></div></section>
 <section class="features"><div><b>⚡ Qualité</b><span>Produits sélectionnés</span></div><div><b>🚚 Livraison</b><span>Partout en Tunisie</span></div><div><b>💬 Commande</b><span>Simple par WhatsApp</span></div></section>
-<section id="produits" class="section"><div class="section-title"><p class="eyebrow">NOTRE COLLECTION</p><h2>Produits populaires</h2></div>
-<div class="products">
+<section id="produits" class="section"><div class="section-title"><p class="eyebrow">NOTRE COLLECTION</p><h2>Produits populaires</h2></div><div class="products">
 <article class="card"><div class="visual spot">LED</div><p class="tag">ÉCLAIRAGE</p><h3>Spot LED encastrable 12W</h3><div class="bottom"><strong>8 TND</strong><a class="order-btn" href="#" data-product="Spot LED encastrable 12W" data-price="8">Commander</a></div></article>
 <article class="card"><div class="visual rgb">RGB</div><p class="tag">RGB</p><h3>Ruban LED RGB 5m</h3><div class="bottom"><strong>25 TND</strong><a class="order-btn" href="#" data-product="Ruban LED RGB 5m" data-price="25">Commander</a></div></article>
 <article class="card"><div class="visual bulb">E27</div><p class="tag">SMART LIGHT</p><h3>Ampoule LED RGB E27</h3><div class="bottom"><strong>15 TND</strong><a class="order-btn" href="#" data-product="Ampoule LED RGB E27" data-price="15">Commander</a></div></article>
 <article class="card"><div class="visual hex">HEX</div><p class="tag">DÉCORATION</p><h3>Panneaux LED hexagonaux</h3><div class="bottom"><strong>45 TND</strong><a class="order-btn" href="#" data-product="Panneaux LED hexagonaux" data-price="45">Commander</a></div></article>
 </div></section>
 <section id="apropos" class="about"><div><p class="eyebrow">LUXORA</p><h2>L'éclairage qui transforme vos espaces.</h2></div><p>Nous proposons des solutions d'éclairage modernes et décoratives pour la maison, les commerces et les espaces professionnels. Notre objectif : rendre chaque espace plus élégant et plus lumineux.</p></section>
+<section id="faq" class="section"><div class="section-title"><p class="eyebrow">FAQ</p><h2>Questions fréquentes</h2></div><div class="faq-list">
+<details><summary>Quels sont les délais de livraison ?</summary><p>La livraison est disponible partout en Tunisie. Le délai dépend de votre gouvernorat.</p></details>
+<details><summary>Comment passer une commande ?</summary><p>Choisissez un produit et cliquez sur Commander, ou ajoutez plusieurs produits au panier.</p></details>
+<details><summary>Puis-je commander plusieurs produits ?</summary><p>Oui. Ajoutez les produits au panier puis confirmez votre commande.</p></details>
+<details><summary>Comment vous contacter ?</summary><p>Vous pouvez nous contacter directement sur WhatsApp.</p></details>
+</div></section>
 <section id="contact" class="cta"><p class="eyebrow">BESOIN D'INFORMATIONS ?</p><h2>Parlons de votre projet.</h2><a class="btn gold" href="https://wa.me/21644379166" target="_blank">Nous contacter sur WhatsApp</a></section>
 </main>
 <footer><strong>LUXORA</strong><span>© 2026 — Éclairez votre style</span></footer>
 
-<div id="orderModal" class="order-modal" hidden><div class="order-box">
-<button type="button" id="closeOrder" class="order-close">×</button><h2>Commander</h2><p id="selectedProduct"></p>
-<form id="orderForm">
-<input id="product" type="hidden"><input id="price" type="hidden">
-<label>Nom complet<input id="customer_name" required></label>
-<label>Téléphone<input id="phone" type="tel" required></label>
-<label>Adresse<input id="address" required></label>
-<label>Gouvernorat<input id="governorate" required></label>
-<label>Quantité<input id="quantity" type="number" min="1" value="1" required></label>
-<label>Notes (optionnel)<textarea id="notes"></textarea></label>
-<p>Total : <strong id="orderTotal">0 TND</strong></p>
-<button type="submit">Confirmer la commande</button><p id="orderMessage"></p>
-</form></div></div>
-
+<div id="cartModal" class="overlay" hidden><div class="popup"><button class="close" id="closeCart">×</button><h2>Votre panier</h2><div id="cartItems"></div><p>Total : <strong id="cartTotal">0 TND</strong></p><button id="cartCheckout">Commander le panier</button></div></div>
+<div id="orderModal" class="overlay" hidden><div class="popup"><button class="close" id="closeOrder">×</button><h2>Commander</h2><p id="selectedProduct"></p><form id="orderForm"><input id="product" type="hidden"><input id="price" type="hidden"><label>Nom complet<input id="customer_name" required></label><label>Téléphone<input id="phone" required></label><label>Adresse<input id="address" required></label><label>Gouvernorat<input id="governorate" required></label><label>Quantité<input id="quantity" type="number" min="1" value="1" required></label><label>Notes (optionnel)<textarea id="notes"></textarea></label><p>Total : <strong id="orderTotal">0 TND</strong></p><button type="submit">Confirmer la commande</button><p id="orderMessage"></p></form></div></div>
 <style>
-.order-modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:grid;place-items:center;padding:20px;z-index:1000}.order-modal[hidden]{display:none}
-.order-box{position:relative;width:min(500px,100%);max-height:90vh;overflow:auto;background:#111;border:1px solid #d9b45b;border-radius:16px;padding:25px;color:#f5f2ea}
-.order-box h2{margin-bottom:5px;color:#d9b45b}.order-box label{display:block;font-size:13px;color:#aaa;margin-top:12px}
-.order-box input,.order-box textarea{display:block;width:100%;margin-top:5px;padding:10px;border-radius:8px;border:1px solid #444;background:#080808;color:#fff}
-.order-box textarea{min-height:70px}.order-box form button{margin-top:12px;width:100%;padding:12px;border:0;border-radius:8px;background:#d9b45b;color:#080808;font-weight:700}
-.order-close{position:absolute;right:12px;top:8px;border:0;background:none;color:#fff;font-size:30px;cursor:pointer}#selectedProduct{color:#aaa}#orderMessage{color:#d9b45b;text-align:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);display:grid;place-items:center;padding:20px;z-index:1000}.overlay[hidden]{display:none}.popup{position:relative;width:min(500px,100%);max-height:90vh;overflow:auto;background:#111;border:1px solid #d9b45b;border-radius:16px;padding:25px;color:#f5f2ea}.popup h2{color:#d9b45b}.close{position:absolute;right:12px;top:7px;border:0;background:none;color:#fff;font-size:30px}.popup label{display:block;color:#aaa;font-size:13px;margin-top:12px}.popup input,.popup textarea{display:block;width:100%;margin-top:5px;padding:10px;background:#080808;color:#fff;border:1px solid #444;border-radius:8px}.popup textarea{min-height:65px}.popup form button,.popup>#cartCheckout{width:100%;margin-top:14px;padding:12px;border:0;border-radius:8px;background:#d9b45b;font-weight:700}.cart-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #292929}.cart-item button{background:none;color:#fff;border:1px solid #555;border-radius:5px;padding:3px 8px}.faq-list{max-width:850px;margin:auto}.faq-list details{background:#111;border:1px solid #292929;border-radius:12px;padding:16px 20px;margin-bottom:12px}.faq-list summary{cursor:pointer;font-weight:700}.faq-list p{color:#aaa;margin-top:8px}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="script.js"></script>
 </body></html>
