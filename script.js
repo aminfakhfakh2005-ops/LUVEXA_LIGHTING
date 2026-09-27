@@ -1,5 +1,5 @@
 const db=window.supabase.createClient("https://bimttawmwzuzlbzgpbqo.supabase.co","sb_publishable_TTQQPHcHGI_a_47m3k_ujg_AN0MpqDA");
-let cart=JSON.parse(localStorage.getItem("luxora_cart")||"[]");
+let cart=JSON.parse(localStorage.getItem("luvexa_lightting_cart")||"[]");
 const count=document.getElementById("cartCount"),cm=document.getElementById("cartModal"),items=document.getElementById("cartItems"),ct=document.getElementById("cartTotal");
 function render(){count.textContent=cart.reduce((s,x)=>s+x.q,0);let t=0;items.innerHTML=cart.length?cart.map((x,i)=>{t+=x.p*x.q;return `<div class="cart-item"><span>${x.n}<br>${x.p} TND × ${x.q}</span><span><button onclick="chg(${i},-1)">−</button> <button onclick="chg(${i},1)">+</button></span></div>`}).join(""):"<p>Votre panier est vide.</p>";ct.textContent=t+" TND";localStorage.setItem("luxora_cart",JSON.stringify(cart))}
 window.chg=(i,d)=>{cart[i].q+=d;if(cart[i].q<1)cart.splice(i,1);render()};
