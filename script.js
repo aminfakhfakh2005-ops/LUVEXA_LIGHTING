@@ -1,0 +1,9 @@
+const SUPABASE_URL="https://bimttawmwzuzlbzgpbqo.supabase.co";
+const SUPABASE_KEY="sb_publishable_TTQQPHcHGI_a_47m3k_ujg_AN0MpqDA";
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const modal=document.getElementById("orderModal"),form=document.getElementById("orderForm"),qty=document.getElementById("quantity");
+const product=document.getElementById("product"),price=document.getElementById("price"),total=document.getElementById("orderTotal"),msg=document.getElementById("orderMessage");
+document.querySelectorAll(".order-btn").forEach(b=>b.onclick=e=>{e.preventDefault();product.value=b.dataset.product;price.value=b.dataset.price;qty.value=1;document.getElementById("selectedProduct").textContent=b.dataset.product+" — "+b.dataset.price+" TND";total.textContent=b.dataset.price+" TND";msg.textContent="";modal.hidden=false;});
+function calc(){total.textContent=(Number(price.value)*Math.max(1,Number(qty.value))).toFixed(2)+" TND"} qty.oninput=calc;
+document.getElementById("closeOrder").onclick=()=>modal.hidden=true; modal.onclick=e=>{if(e.target===modal)modal.hidden=true};
+form.onsubmit=async e=>{e.preventDefault();msg.textContent="Enregistrement de la commande…";const q=Math.max(1,Number(qty.value)),p=Number(price.value),a=document.getElementById("address").value.trim(),g=document.getElementById("governorate").value.trim(),n=document.getElementById("notes").value.trim();const {error}=await db.from("orders").insert([{customer_name:document.getElementById("customer_name").value.trim(),phone:document.getElementById("phone").value.trim(),address:a+" — "+g+(n?" — Note: "+n:""),products:[{name:product.value,quantity:q,unit_price:p}],total:Number((p*q).toFixed(2)),status:"pending"}]);if(error){console.error(error);msg.textContent="Erreur lors de l'envoi. Vérifiez la connexion puis réessayez."}else{msg.textContent="Commande confirmée avec succès ✓";form.reset();qty.value=1;total.textContent="0 TND"}};
