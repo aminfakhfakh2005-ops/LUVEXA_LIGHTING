@@ -1,4 +1,4 @@
-# LUXORA — Version finale
+# luvexa lighting — Version finale
 
 Contenu du site :
 - index.html
