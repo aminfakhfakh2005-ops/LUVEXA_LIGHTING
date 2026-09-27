@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUXORA — Éclairez votre style</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .order-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9999;align-items:center;justify-content:center;padding:20px}
+    .order-modal.active{display:flex}
+    .order-box{width:min(520px,100%);background:#111;border:1px solid #d4af37;border-radius:18px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.55);position:relative}
+    .order-box h2{margin:0 0 8px;color:#d4af37}
+    .order-box p{color:#bbb;margin:0 0 20px}
+    .order-close{position:absolute;right:16px;top:10px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+    .order-form{display:grid;gap:12px}
+    .order-form label{color:#ddd;font-size:14px}
+    .order-form input,.order-form textarea,.order-form select{width:100%;box-sizing:border-box;background:#191919;color:#fff;border:1px solid #444;border-radius:9px;padding:12px}
+    .order-form textarea{min-height:80px;resize:vertical}
+    .order-total{display:flex;justify-content:space-between;color:#d4af37;font-size:18px;font-weight:700;margin:5px 0}
+    .order-submit{border:0;cursor:pointer;background:#d4af37;color:#000;border-radius:9px;padding:13px;font-weight:700}
+    .order-submit:disabled{opacity:.6;cursor:not-allowed}
+    .order-message{display:none;padding:12px;border-radius:9px;margin-top:10px}
+    .order-message.success{display:block;background:#123b20;color:#9cffb0}
+    .order-message.error{display:block;background:#451818;color:#ffb0b0}
+  </style>
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="#">LUX<span>O</span>RA</a>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#produits">Produits</a>
+    <a href="#apropos">À propos</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="wa small" href="https://wa.me/21644379166" target="_blank">WhatsApp</a>
+</header>
+
+<main>
+<section id="accueil" class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">ÉCLAIRAGE • DÉCORATION • RGB</p>
+    <h1>Donnez vie à vos idées <span>lumineuses.</span></h1>
+    <p>Spots LED, rubans RGB, éclairage décoratif et solutions lumineuses pour votre intérieur.</p>
+    <div class="actions">
+      <a class="btn gold" href="#produits">Voir les produits</a>
+      <a class="btn outline" href="#produits">Commander en ligne</a>
+    </div>
+  </div>
+  <div class="orb"><div class="orb-ring"></div><div class="orb-core">LUXORA</div></div>
+</section>
+
+<section class="features">
+  <div><b>⚡ Qualité</b><span>Produits sélectionnés</span></div>
+  <div><b>🚚 Livraison</b><span>Partout en Tunisie</span></div>
+  <div><b>🛒 Commande</b><span>Commande directement en ligne</span></div>
+</section>
+
+<section id="produits" class="section">
+  <div class="section-title">
+    <p class="eyebrow">NOTRE COLLECTION</p>
+    <h2>Produits populaires</h2>
+  </div>
+  <div class="products">
+    <article class="card">
+      <div class="visual spot">LED</div>
+      <p class="tag">ÉCLAIRAGE</p><h3>Spot LED encastrable 12W</h3>
+      <div class="bottom"><strong>8 TND</strong><a class="order-btn" href="#" data-product="Spot LED encastrable 12W" data-price="8">Commander</a></div>
+    </article>
+    <article class="card">
+      <div class="visual rgb">RGB</div>
+      <p class="tag">RGB</p><h3>Ruban LED RGB 5m</h3>
+      <div class="bottom"><strong>25 TND</strong><a class="order-btn" href="#" data-product="Ruban LED RGB 5m" data-price="25">Commander</a></div>
+    </article>
+    <article class="card">
+      <div class="visual bulb">E27</div>
+      <p class="tag">SMART LIGHT</p><h3>Ampoule LED RGB E27</h3>
+      <div class="bottom"><strong>15 TND</strong><a class="order-btn" href="#" data-product="Ampoule LED RGB E27" data-price="15">Commander</a></div>
+    </article>
+    <article class="card">
+      <div class="visual hex">HEX</div>
+      <p class="tag">DÉCORATION</p><h3>Panneaux LED hexagonaux</h3>
+      <div class="bottom"><strong>45 TND</strong><a class="order-btn" href="#" data-product="Panneaux LED hexagonaux" data-price="45">Commander</a></div>
+    </article>
+  </div>
+</section>
+
+<section id="apropos" class="about">
+  <div><p class="eyebrow">LUXORA</p><h2>L'éclairage qui transforme vos espaces.</h2></div>
+  <p>Nous proposons des solutions d'éclairage modernes et décoratives pour la maison, les commerces et les espaces professionnels. Notre objectif : rendre chaque espace plus élégant et plus lumineux.</p>
+</section>
+
+<section id="contact" class="cta">
+  <p class="eyebrow">BESOIN D'INFORMATIONS ?</p>
+  <h2>Parlons de votre projet.</h2>
+  <a class="btn gold" href="https://wa.me/21644379166" target="_blank">Nous contacter sur WhatsApp</a>
+</section>
+</main>
+
+<footer><strong>LUXORA</strong><span>© 2026 — Éclairez votre style</span></footer>
+
+<div class="order-modal" id="orderModal">
+  <div class="order-box">
+    <button class="order-close" id="closeOrder" type="button">×</button>
+    <h2>Commander chez LUXORA</h2>
+    <p id="selectedProduct">Produit</p>
+    <form class="order-form" id="orderForm">
+      <label>Quantité
+        <input id="orderQuantity" type="number" min="1" value="1" required>
+      </label>
+      <label>Nom et prénom
+        <input id="customerName" type="text" required>
+      </label>
+      <label>Téléphone
+        <input id="customerPhone" type="tel" required>
+      </label>
+      <label>Adresse
+        <input id="customerAddress" type="text" required>
+      </label>
+      <label>Gouvernorat
+        <select id="governorate" required>
+          <option value="">Choisir</option>
+          <option>Tunis</option><option>Ariana</option><option>Ben Arous</option><option>Manouba</option>
+          <option>Nabeul</option><option>Zaghouan</option><option>Bizerte</option><option>Béja</option>
+          <option>Jendouba</option><option>Le Kef</option><option>Siliana</option><option>Sousse</option>
+          <option>Monastir</option><option>Mahdia</option><option>Sfax</option><option>Kairouan</option>
+          <option>Kasserine</option><option>Sidi Bouzid</option><option>Gabès</option><option>Médenine</option>
+          <option>Tataouine</option><option>Gafsa</option><option>Tozeur</option><option>Kébili</option>
+        </select>
+      </label>
+      <label>Notes (optionnel)
+        <textarea id="orderNotes" placeholder="Informations supplémentaires..."></textarea>
+      </label>
+      <div class="order-total"><span>Total</span><span id="orderTotal">0 TND</span></div>
+      <button class="order-submit" id="submitOrder" type="submit">Confirmer la commande</button>
+      <div id="orderMessage" class="order-message"></div>
+    </form>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
