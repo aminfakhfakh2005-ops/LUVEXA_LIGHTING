@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUXORA — Administration</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#f5f2ea;font-family:Arial,Helvetica,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 10%,rgba(217,180,91,.08),transparent 28%)}
+header{position:sticky;top:0;z-index:10;padding:18px 6%;border-bottom:1px solid #292929;background:rgba(8,8,8,.92);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:900;letter-spacing:4px}.logo span{color:#d9b45b}
+header button{width:auto;margin:0}
+main{max-width:1250px;margin:0 auto;padding:35px 20px 60px}
+.login{max-width:420px;margin:80px auto;background:#111;border:1px solid #292929;border-radius:18px;padding:30px;box-shadow:0 15px 50px #000}
+.login h2{margin-top:0;color:#d9b45b}
+input,select{width:100%;padding:12px;background:#0b0b0b;color:#fff;border:1px solid #444;border-radius:9px;outline:none}
+input:focus,select:focus{border-color:#d9b45b}
+.login button,button{padding:11px 17px;background:#d9b45b;color:#080808;border:0;border-radius:9px;font-weight:700;cursor:pointer}
+.login button{width:100%;margin-top:8px}
+.msg{color:#d9b45b;min-height:20px}
+.top{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+h1{font-size:38px;margin:0 0 5px}.subtitle{color:#888;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.stat{background:#111;border:1px solid #292929;border-radius:14px;padding:18px}.stat span{display:block;color:#888;font-size:12px}.stat strong{display:block;font-size:25px;color:#d9b45b;margin-top:5px}
+.tools{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}.tools input{max-width:380px}.tools select{width:auto;min-width:170px}
+.table{overflow:auto;background:#111;border:1px solid #292929;border-radius:15px}
+table{width:100%;min-width:1050px;border-collapse:collapse}th,td{padding:14px;border-bottom:1px solid #292929;text-align:left;font-size:13px;vertical-align:top}th{color:#d9b45b;font-size:12px;letter-spacing:.5px}
+.status{padding:5px 9px;border-radius:20px;background:#222;color:#ddd}
+.empty{text-align:center;color:#888;padding:30px}
+@media(max-width:750px){main{padding:25px 12px 45px}h1{font-size:30px}.stats{grid-template-columns:repeat(2,1fr)}.top{align-items:start}.tools input{max-width:none;width:100%}.tools select{width:100%}header{padding:15px 5%}}
+</style>
+</head>
+<body>
+<header><div class="logo">LUX<span>O</span>RA</div><button id="logout" hidden>Déconnexion</button></header>
+
+<div id="login" class="login">
+<h2>Administration LUXORA</h2>
+<p>Connectez-vous pour gérer les commandes.</p>
+<input id="email" type="email" placeholder="Email" autocomplete="email">
+<input id="password" type="password" placeholder="Mot de passe" autocomplete="current-password">
+<button id="loginBtn">Se connecter</button>
+<p id="msg" class="msg"></p>
+</div>
+
+<main id="app" hidden>
+<div class="top"><div><h1>Commandes</h1><p class="subtitle">Tableau de bord LUXORA</p></div><button id="refresh">Actualiser</button></div>
+
+<div class="stats">
+<div class="stat"><span>Toutes</span><strong id="allCount">0</strong></div>
+<div class="stat"><span>En attente</span><strong id="pendingCount">0</strong></div>
+<div class="stat"><span>Confirmées</span><strong id="confirmedCount">0</strong></div>
+<div class="stat"><span>Chiffre d'affaires</span><strong id="totalAmount">0 TND</strong></div>
+</div>
+
+<div class="tools">
+<input id="search" placeholder="Rechercher par nom ou téléphone">
+<select id="filter"><option value="">Tous les statuts</option><option value="pending">pending</option><option value="confirmed">confirmed</option><option value="delivered">delivered</option><option value="cancelled">cancelled</option></select>
+</div>
+
+<div class="table"><table><thead><tr><th>Date</th><th>Client</th><th>Téléphone</th><th>Adresse</th><th>Produits</th><th>Total</th><th>Statut</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const db=supabase.createClient("https://bimttawmwzuzlbzgpbqo.supabase.co","sb_publishable_TTQQPHcHGI_a_47m3k_ujg_AN0MpqDA");
+let orders=[];
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+
+async function init(){
+ const s=await db.auth.getSession();
+ if(s.data.session){$("login").hidden=true;$("app").hidden=false;$("logout").hidden=false;load();}
+}
+async function load(){
+ const r=await db.from("orders").select("*").order("created_at",{ascending:false});
+ if(r.error){$("rows").innerHTML="<tr><td colspan='7' class='empty'>"+esc(r.error.message)+"</td></tr>";return;}
+ orders=r.data||[];render();
+}
+function render(){
+ const q=$("search").value.toLowerCase(),f=$("filter").value;
+ $("allCount").textContent=orders.length;
+ $("pendingCount").textContent=orders.filter(o=>o.status==="pending").length;
+ $("confirmedCount").textContent=orders.filter(o=>o.status==="confirmed").length;
+ $("totalAmount").textContent=orders.reduce((s,o)=>s+Number(o.total||0),0).toFixed(2)+" TND";
+ const list=orders.filter(o=>(!f||o.status===f)&&((o.customer_name||"").toLowerCase().includes(q)||(o.phone||"").includes(q)));
+ if(!list.length){$("rows").innerHTML="<tr><td colspan='7' class='empty'>Aucune commande trouvée.</td></tr>";return;}
+ $("rows").innerHTML=list.map(o=>{
+  const ps=Array.isArray(o.products)?o.products.map(x=>esc(x.name)+" × "+esc(x.quantity)).join("<br>"):esc(o.products);
+  return "<tr><td>"+esc(new Date(o.created_at).toLocaleString("fr-FR"))+"</td><td><b>"+esc(o.customer_name)+"</b></td><td>"+esc(o.phone)+"</td><td>"+esc(o.address||"")+"</td><td>"+ps+"</td><td><b>"+Number(o.total||0).toFixed(2)+" TND</b></td><td><select onchange=\"changeStatus('"+o.id+"',this.value)\"><option value='pending' "+(o.status==="pending"?"selected":"")+">pending</option><option value='confirmed' "+(o.status==="confirmed"?"selected":"")+">confirmed</option><option value='delivered' "+(o.status==="delivered"?"selected":"")+">delivered</option><option value='cancelled' "+(o.status==="cancelled"?"selected":"")+">cancelled</option></select></td></tr>";
+ }).join("");
+}
+window.changeStatus=async(id,status)=>{
+ const r=await db.from("orders").update({status}).eq("id",id);
+ if(r.error)alert(r.error.message);else load();
+};
+$("loginBtn").onclick=async()=>{
+ $("msg").textContent="Connexion…";
+ const r=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+ if(r.error)$("msg").textContent=r.error.message;else init();
+};
+$("logout").onclick=async()=>{await db.auth.signOut();location.reload()};
+$("refresh").onclick=load;$("search").oninput=render;$("filter").onchange=render;init();
+</script>
+</body></html>
